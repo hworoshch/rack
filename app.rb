@@ -19,8 +19,7 @@ class App
   end
 
   def show_time
-    date = DateTimeFormat.new(DateTime.now, @req.params['format'])
-    answer = date.wrong? ? 400 : 200
-    [answer, header, [date.to_s]]
+    response = DateTimeFormat.new(DateTime.now, @req.params['format'])
+    response.wrong? ? [400, header, [response.bad_response]] : [200, header, [response.good_response]]
   end
 end

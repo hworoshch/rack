@@ -1,16 +1,5 @@
 class DateTimeFormat
-  FORMATS = {
-    date: {
-      'year' => '%Y',
-      'month' => '%m',
-      'day' => '%d'
-    },
-    time: {
-      'hour' => '%H',
-      'minute' => '%M',
-      'second' => '%S'
-    }
-  }.freeze
+  FORMATS = { date: { 'year' => '%Y', 'month' => '%m', 'day' => '%d' }, time: { 'hour' => '%H', 'minute' => '%M', 'second' => '%S' } }.freeze
 
   def initialize(date, format)
     @date = date
@@ -24,8 +13,12 @@ class DateTimeFormat
     @wrong.any?
   end
 
-  def to_s
-    wrong? ? "Unknown format #{@wrong}" : @formatted
+  def good_response
+    "#{@formatted}\n"
+  end
+
+  def bad_response
+    "Unknown format #{@wrong}"
   end
 
   private
