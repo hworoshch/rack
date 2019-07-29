@@ -3,11 +3,13 @@ class DateTimeFormat
     date: {
       'year' => '%Y',
       'month' => '%m',
-      'day' => '%d' },
+      'day' => '%d'
+    },
     time: {
       'hour' => '%H',
       'minute' => '%M',
-      'second' => '%S' }
+      'second' => '%S'
+    }
   }.freeze
 
   def initialize(date, format)
@@ -18,12 +20,12 @@ class DateTimeFormat
     @formatted = @date.strftime(convert_format)
   end
 
-  def has_wrong?
+  def wrong?
     @wrong.any?
   end
 
   def to_s
-    self.has_wrong? ? "Unknown format #{@wrong}" : @formatted
+    wrong? ? "Unknown format #{@wrong}" : @formatted
   end
 
   private

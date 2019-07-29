@@ -15,12 +15,12 @@ class App
   end
 
   def show_404
-    [ 404, header, ["Path not found\n"] ]
+    [404, header, ["Path not found\n"]]
   end
 
   def show_time
     date = DateTimeFormat.new(DateTime.now, @req.params['format'])
-    answer = date.has_wrong? ? 400 : 200
-    [ answer, header, [date.to_s] ]
+    answer = date.wrong? ? 400 : 200
+    [answer, header, [date.to_s]]
   end
 end
